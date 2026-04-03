@@ -1,0 +1,42 @@
+ANALYSE QUALITATIVE
+================================================================================
+Utilisateur : AE2HXICMT6PERVL3EOWNRJ6Z4Q6Q
+
+1) Cohérence thématique
+Les recommandations semblent globalement cohérentes avec l’historique de lecture. On retrouve des catégories communes entre l’historique et les recommandations, notamment : Literature & Fiction, Genre Fiction, Books.
+
+2) Proximité apparente entre les livres
+Les livres recommandés partagent visiblement des thèmes ou des catégories proches de ceux déjà consultés par l’utilisateur, ce qui est cohérent avec une approche de filtrage basé sur le contenu reposant sur la similarité textuelle.
+
+3) Redondance potentielle
+Certaines recommandations paraissent plausibles mais potentiellement redondantes, car elles restent concentrées sur des catégories déjà fortement présentes dans l’historique. Cela améliore la pertinence immédiate, mais peut réduire la diversité.
+
+4) Risque de sur-spécialisation
+Le modèle ne paraît pas excessivement spécialisé sur cet exemple, même s’il reste naturellement orienté vers des livres similaires à l’historique utilisateur.
+
+Conclusion
+Dans l’ensemble, les recommandations sont plausibles et cohérentes avec la logique d’un modèle content-based. Cette lecture qualitative reste indicative et sera complétée par l’évaluation quantitative dans la tâche 4.
+
+================================================================================
+EXEMPLES D'HISTORIQUE (jusqu'à 5)
+================================================================================
+- Merciless God: A Guardians of Terra Novel [B0B7FK9FFS] | Books > Literature & Fiction > Genre Fiction
+- Caged by Her Dragons (Fated Mate of the Dragon Clans Book 1) [B07ZZCWQNT] | Books > Literature & Fiction > Genre Fiction
+- Cruel Kiss: A Dark Mafia Arranged Marriage Romance (Sinners' Secrets Book 1) [B09CLJS5V6] | Books > Mystery, Thriller & Suspense > Thrillers & Suspense
+- Wild Card (Wanda's Psychic Readings) [B0B5MP849V] | Books > Romance > Paranormal
+- Stolen Paradise: A Dark Paranormal Romance (Kings of Eden Book 2) [B09SP81VS2] | Books > Literature & Fiction > Genre Fiction
+
+================================================================================
+EXEMPLES DE RECOMMANDATIONS (jusqu'à 5)
+================================================================================
+- Blood Witch (Phases of the Moon Book 2) [B09RW9QZB5] | Books > Literature & Fiction > Genre Fiction
+- Ruthless War (The Vampyres’ Source) [B0BHMS26KN] | Books > Romance > Paranormal
+- Ruthless War (The Vampyres’ Source) [B0BHL4N9MK] | Books > Romance > Paranormal
+- House of Wyn (The Harem Project) [B0BM2VDTJV] | Books > Literature & Fiction > Genre Fiction
+- House of Wyn (The Harem Project) [B09RVZN4CY] | Books > Literature & Fiction > Genre Fiction
+
+================================================================================
+CATEGORIES DOMINANTES
+================================================================================
+Historique : Books (20), Literature & Fiction (15), Genre Fiction (14), Mystery, Thriller & Suspense (4), Thrillers & Suspense (2)
+Recommandations : Books (20), Literature & Fiction (9), Genre Fiction (7), Romance (7), Paranormal (5)

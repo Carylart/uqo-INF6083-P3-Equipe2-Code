@@ -40,3 +40,6 @@ ITEM_METADATA_LIGHT = SPLITS / "item_metadata_light.parquet"
 USER_HISTORIES = SPLITS / "user_seen_items_train.pkl"
 USER_TO_IDX = SPLITS / "user_to_idx.pkl"
 USER_PROFILES = SPLITS / "user_profiles_matrix.npz"
+
+# task 1
+TASK1_REC = OUTPUTS / "task_1" / "task_1_top_20_test_items_from_train_scores.csv"

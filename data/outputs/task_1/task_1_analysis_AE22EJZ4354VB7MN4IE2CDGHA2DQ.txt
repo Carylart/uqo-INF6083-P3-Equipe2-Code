@@ -1,0 +1,42 @@
+ANALYSE QUALITATIVE
+================================================================================
+Utilisateur : AE22EJZ4354VB7MN4IE2CDGHA2DQ
+
+1) Cohérence thématique
+Les recommandations semblent globalement cohérentes avec l’historique de lecture. On retrouve des catégories communes entre l’historique et les recommandations, notamment : Literature & Fiction, Genre Fiction, Books.
+
+2) Proximité apparente entre les livres
+Les livres recommandés partagent visiblement des thèmes ou des catégories proches de ceux déjà consultés par l’utilisateur, ce qui est cohérent avec une approche de filtrage basé sur le contenu reposant sur la similarité textuelle.
+
+3) Redondance potentielle
+Certaines recommandations paraissent plausibles mais potentiellement redondantes, car elles restent concentrées sur des catégories déjà fortement présentes dans l’historique. Cela améliore la pertinence immédiate, mais peut réduire la diversité.
+
+4) Risque de sur-spécialisation
+Le modèle ne paraît pas excessivement spécialisé sur cet exemple, même s’il reste naturellement orienté vers des livres similaires à l’historique utilisateur.
+
+Conclusion
+Dans l’ensemble, les recommandations sont plausibles et cohérentes avec la logique d’un modèle content-based. Cette lecture qualitative reste indicative et sera complétée par l’évaluation quantitative dans la tâche 4.
+
+================================================================================
+EXEMPLES D'HISTORIQUE (jusqu'à 5)
+================================================================================
+- Castles in Their Bones [0593118162] | Books > Teen & Young Adult > Science Fiction & Fantasy
+- The Daughter of Doctor Moreau [0593355334] | Books > Literature & Fiction > Genre Fiction
+- A Shoe Story [0593102118] | Books > Literature & Fiction > Genre Fiction
+- Reputation: A Novel [B09JPJLSW5] | Books > Mystery, Thriller & Suspense > Thrillers & Suspense
+- Bravely [1368071341] | Books > Teen & Young Adult > Literature & Fiction
+
+================================================================================
+EXEMPLES DE RECOMMANDATIONS (jusqu'à 5)
+================================================================================
+- Before You Knew My Name: A Novel [1982198990] | Books > Mystery, Thriller & Suspense > Thrillers & Suspense
+- Every Summer After [0593438531] | Books > Literature & Fiction > Genre Fiction
+- You're Invited [0593335120] | Books > Mystery, Thriller & Suspense > Thrillers & Suspense
+- The Dead Romantics [0593336488] | Books > Literature & Fiction > Genre Fiction
+- The Cloisters: A Novel [1668004402] | Books > Literature & Fiction > Genre Fiction
+
+================================================================================
+CATEGORIES DOMINANTES
+================================================================================
+Historique : Books (17), Literature & Fiction (11), Teen & Young Adult (6), Genre Fiction (4), Science Fiction & Fantasy (3)
+Recommandations : Books (20), Literature & Fiction (18), Genre Fiction (14), Mystery, Thriller & Suspense (2), Thrillers & Suspense (2)

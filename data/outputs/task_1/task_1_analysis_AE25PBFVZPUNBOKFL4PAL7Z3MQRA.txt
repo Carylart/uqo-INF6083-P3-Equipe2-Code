@@ -1,0 +1,42 @@
+ANALYSE QUALITATIVE
+================================================================================
+Utilisateur : AE25PBFVZPUNBOKFL4PAL7Z3MQRA
+
+1) Cohérence thématique
+Les recommandations semblent globalement cohérentes avec l’historique de lecture. On retrouve des catégories communes entre l’historique et les recommandations, notamment : Literature & Fiction, Mystery, Thriller & Suspense, Books.
+
+2) Proximité apparente entre les livres
+Les livres recommandés partagent visiblement des thèmes ou des catégories proches de ceux déjà consultés par l’utilisateur, ce qui est cohérent avec une approche de filtrage basé sur le contenu reposant sur la similarité textuelle.
+
+3) Redondance potentielle
+Certaines recommandations paraissent plausibles mais potentiellement redondantes, car elles restent concentrées sur des catégories déjà fortement présentes dans l’historique. Cela améliore la pertinence immédiate, mais peut réduire la diversité.
+
+4) Risque de sur-spécialisation
+Le modèle ne paraît pas excessivement spécialisé sur cet exemple, même s’il reste naturellement orienté vers des livres similaires à l’historique utilisateur.
+
+Conclusion
+Dans l’ensemble, les recommandations sont plausibles et cohérentes avec la logique d’un modèle content-based. Cette lecture qualitative reste indicative et sera complétée par l’évaluation quantitative dans la tâche 4.
+
+================================================================================
+EXEMPLES D'HISTORIQUE (jusqu'à 5)
+================================================================================
+- Whisky Hernandez [B0BKRQ4SXX] | Books > Mystery, Thriller & Suspense > Mystery
+- The Influencer: A Nick Lynch Thriller, Book 2 (Nick Lynch Crime Thriller Series with Jenny McFadden) [B0B7GR1RD8] | Books > Mystery, Thriller & Suspense > Thrillers & Suspense
+- Mush Love Mushroom Cultivation: 21 Step-by-Step Methods to Master Your Mushroom Growing Skills in as Little as 4 Weeks [B096TN94YZ] | Books > Crafts, Hobbies & Home > Gardening & Landscape Design
+- Wacky Jokes For 8 Year Old Kids: Hundreds of fantastic side splitters, knock knocks, tongue twisters, riddles, crazy facts, and jokes for 8 year olds [B09QP2MMNZ] | Books > Literature & Fiction > Genre Fiction
+- Nightmares & Daydreams [B0BJ8JTF35] | Books > Mystery, Thriller & Suspense > Thrillers & Suspense
+
+================================================================================
+EXEMPLES DE RECOMMANDATIONS (jusqu'à 5)
+================================================================================
+- Mush Love Mushroom Cultivation: 21 Step-by-Step Methods to Master Your Mushroom Growing Skills in as Little as 4 Weeks [B096TN94YZ] | Books > Crafts, Hobbies & Home > Gardening & Landscape Design
+- Before You Knew My Name: A Novel [1982198990] | Books > Mystery, Thriller & Suspense > Thrillers & Suspense
+- Snuff (Nick Lynch Crime Thriller Series with Jenny McFadden Book 1) [B09C4T1NBZ] | Books > Mystery, Thriller & Suspense > Thrillers & Suspense
+- Every Summer After [0593438531] | Books > Literature & Fiction > Genre Fiction
+- The Cloisters: A Novel [1668004402] | Books > Literature & Fiction > Genre Fiction
+
+================================================================================
+CATEGORIES DOMINANTES
+================================================================================
+Historique : Books (21), Literature & Fiction (8), Mystery, Thriller & Suspense (5), Crafts, Hobbies & Home (5), Gardening & Landscape Design (4)
+Recommandations : Books (20), Literature & Fiction (15), Genre Fiction (10), Mystery, Thriller & Suspense (4), Thrillers & Suspense (4)

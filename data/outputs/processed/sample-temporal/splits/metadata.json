@@ -1,0 +1,18 @@
+{
+  "source_file": "/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/processed/sample-temporal/temporal_filtered.parquet",
+  "split_seed": 42,
+  "train_ratio": 0.8,
+  "test_ratio": 0.19999999999999996,
+  "n_users": 417,
+  "n_items": 1200,
+  "train": {
+    "n_ratings": 11244,
+    "n_users": 417,
+    "n_items": 1198
+  },
+  "test": {
+    "n_ratings": 2487,
+    "n_users": 417,
+    "n_items": 980
+  }
+}

@@ -1,0 +1,22 @@
+================================================================================
+TASK 2 - ÉVALUATION ET COMPARAISON (ÉTAPE 6)
+================================================================================
+
+RÉSULTATS DE COMPARAISON (Top-20)
+--------------------------------------------------------------------------------
+Task 0 (Contenu) : N/A
+Task 1 (Collaboratif UBCF) : {'precision': np.float64(0.0106024096385542), 'recall': np.float64(0.0431745429938201), 'f1': np.float64(0.0166240900059193)}
+Task 2 (RDF/Graphe) : {'precision': 0.30141402714932125, 'recall': 0.48791666666666667, 'f1': 0.33275974025974026}
+
+ANALYSE COMPARATIVE
+--------------------------------------------------------------------------------
+- Apport sémantique : RDF permet inférence et relations riches (catégories, auteurs, etc.)
+- Impact inférence : Augmente recommandations en découvrant connections explicites.
+- Avantages RDF :
+  * Explicabilité : tracer POURQUOI un item est recommandé via requêtes.
+  * Flexibilité : ajouter nouvelles relations/règles sans recalcul complet.
+  * Sémantique : capturer domaine métier (catégories, auteurs, etc.)
+- Limites RDF :
+  * Performance : graphes volumineux ralentissent inférence.
+  * Complétude : dépend de qualité de l'ontologie et des données.
+  * Froides-start : moins efficace que collaboratif pour users/items nouveaux.

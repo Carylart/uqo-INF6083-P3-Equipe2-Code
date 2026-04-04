@@ -43,3 +43,6 @@ USER_PROFILES = SPLITS / "user_profiles_matrix.npz"
 
 # task 1
 TASK1_REC = OUTPUTS / "task_1" / "task_1_top_20_test_items_from_train_scores.csv"
+
+# task 2
+TASK2_REC = OUTPUTS / "task_2" / "task_2_top_20_recommendations.csv"

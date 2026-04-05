@@ -22,6 +22,7 @@ def _setup_paths():
         str(ROOT / "task_0" / "scripts"),
         str(ROOT / "task_1"),
         str(ROOT / "task_2"),
+        str(ROOT / "task_3"),
     ]
     for d in dirs:
         if d not in sys.path:
@@ -244,12 +245,12 @@ def action_ubcf():
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# Tâche 2 — Graphe de connaissances RDF/OWL
+# Tâche 3 — Graphe de connaissances RDF/OWL
 # ══════════════════════════════════════════════════════════════════════════════
-def action_task2_rdf():
-    section("Tâche 2 — Graphe de connaissances (RDF/OWL/SPARQL)", BLUE)
+def action_task3_rdf():
+    section("Tâche 3 — Graphe de connaissances (RDF/OWL/SPARQL)", BLUE)
     info("Crée l'ontologie OWL, peuple les triplets RDF, applique les règles SWRL.")
-    info("Sorties → data/outputs/task_2/ (ontology.owl, graph.ttl, recommandations)\n")
+    info("Sorties → data/outputs/task_3/ (ontology.owl, graph.ttl, recommandations)\n")
 
     # Vérifier rdflib et owlready2 avant de lancer
     missing = []
@@ -270,7 +271,7 @@ def action_task2_rdf():
         return
 
     try:
-        from task_2_rdf import main
+        from task_3.task_3_rdf import main
         t0 = time.time()
         main()
         print(f"\n{GREEN}{BOLD}  Graphe RDF construit en {time.time()-t0:.1f}s.{RESET}")
@@ -280,12 +281,12 @@ def action_task2_rdf():
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# Tâche 2 — Évaluation comparative
+# Tâche 3 — Évaluation comparative
 # ══════════════════════════════════════════════════════════════════════════════
-def action_task2_eval():
-    section("Tâche 2 — Évaluation et comparaison des trois approches", BLUE)
-    info("Compare Tâche 0 (contenu), Tâche 1 (UBCF) et Tâche 2 (RDF).")
-    info("Sorties → data/outputs/task_2/task_2_comparison_results.csv\n")
+def action_task3_eval():
+    section("Tâche 3 — Évaluation et comparaison des trois approches", BLUE)
+    info("Compare Tâche 0 (contenu), Tâche 1 (UBCF) et Tâche 3 (RDF).")
+    info("Sorties → data/outputs/task_3/task_3_comparison_results.csv\n")
 
     if not confirm("Lancer l'évaluation comparative ?"):
         warn("Annulé.")
@@ -293,7 +294,7 @@ def action_task2_eval():
         return
 
     try:
-        from task_2_evaluation import main
+        from task_3.task_3_evaluation import main
         t0 = time.time()
         main()
         print(f"\n{GREEN}{BOLD}  Évaluation terminée en {time.time()-t0:.1f}s.{RESET}")
@@ -318,8 +319,8 @@ def action_pipeline_complet():
     etapes = [
         ("Tâche 0  — Contenu TF-IDF",           _run("task_0_main",   "task_0")),
         ("Tâche 1  — UBCF",                      _run("task_2_main",   "task_2")),
-        ("Tâche 2  — Graphe RDF",                _run("task_2_rdf",    "main")),
-        ("Tâche 2  — Évaluation comparative",    _run("task_2_evaluation", "main")),
+        ("Tâche 3  — Graphe RDF",                _run("task_3.task_3_rdf",    "main")),
+        ("Tâche 3  — Évaluation comparative",    _run("task_3.task_3_evaluation", "main")),
     ]
 
     t_total = time.time()
@@ -342,9 +343,8 @@ def action_pipeline_complet():
 def _run(module_name, func_name):
     """Retourne une fonction qui importe et appelle module.func_name()."""
     def fn():
-        mod = __import__(module_name)
-        # Recharger pour éviter les problèmes de cache si relancé plusieurs fois
         import importlib
+        mod = importlib.import_module(module_name)
         mod = importlib.reload(mod)
         getattr(mod, func_name)()
     return fn
@@ -363,8 +363,8 @@ MENU = [
     ("3", f"{PURPLE}Tâche 1  —  Filtrage collaboratif (task_1_main.py){RESET}", action_task1),
     ("4", f"{PURPLE}Tâche 1  —  UBCF (task_2_main.py){RESET}",                 action_ubcf),
     (None, None, None),
-    ("5", f"{BLUE}Tâche 2  —  Graphe de connaissances (RDF/OWL){RESET}",       action_task2_rdf),
-    ("6", f"{BLUE}Tâche 2  —  Évaluation et comparaison{RESET}",               action_task2_eval),
+    ("5", f"{BLUE}Tâche 3  —  Graphe de connaissances (RDF/OWL){RESET}",       action_task3_rdf),
+    ("6", f"{BLUE}Tâche 3  —  Évaluation et comparaison{RESET}",               action_task3_eval),
     (None, None, None),
     ("7", f"{YELLOW}Pipeline complet  (0 → UBCF → RDF → évaluation){RESET}",   action_pipeline_complet),
     (None, None, None),

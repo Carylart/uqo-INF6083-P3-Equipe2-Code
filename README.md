@@ -11,7 +11,7 @@ Ce projet explore trois paradigmes fondamentaux des systèmes de recommandation,
 |-------|----------|-------------------|
 | **Tâche 0** | Filtrage basé sur le contenu (TF-IDF) | `task_0/scripts/task_0_main.py` |
 | **Tâche 1** | Filtrage collaboratif utilisateur (UBCF) | `task_1/task_1_main.py` |
-| **Tâche 2** | Graphe de connaissances (RDF/OWL/SPARQL) | `task_2/task_2_rdf.py` |
+| **Tâche 3** | Graphe de connaissances (RDF/OWL/SPARQL) | `task_3/task_3_rdf.py` |
 
 Le dataset utilisé est un sous-ensemble temporel de reviews Amazon Books : **417 utilisateurs**, **1 200 items**, **14 045 interactions**.
 
@@ -22,7 +22,7 @@ Le dataset utilisé est un sous-ensemble temporel de reviews Amazon Books : **41
 ### Prérequis
 
 - Python 3.10+
-- Java JDK 21+ (requis uniquement pour la Tâche 2 — raisonneur HermiT)
+- Java JDK 21+ (requis uniquement pour la Tâche 3 — raisonneur HermiT)
 
 ### Mise en place de l'environnement
 
@@ -119,7 +119,7 @@ Sur 417 utilisateurs, **414 ont reçu au moins une recommandation** (couverture 
 
 ---
 
-## Tâche 2 — Graphe de connaissances (RDF/OWL/SPARQL)
+## Tâche 3 — Graphe de connaissances (RDF/OWL/SPARQL)
 
 ### Principe
 
@@ -145,10 +145,10 @@ Si un utilisateur a écrit un avis sur un item, il est inféré comme "aimé".
 
 ```bash
 # Étapes 1 à 5 : création du graphe, inférence, requêtes SPARQL
-python task_2/task_2_rdf.py
+python task_3/task_3_rdf.py
 
 # Étape 6 : évaluation et comparaison
-python task_2/task_2_evaluation.py
+python task_3/task_3_evaluation.py
 ```
 
 ### Requêtes SPARQL disponibles
@@ -191,12 +191,12 @@ LIMIT 20
 ### Fichiers générés
 
 ```
-data/outputs/task_2/
+data/outputs/task_3/
 ├── ontology.owl
 ├── graph.ttl
-├── task_2_rdf_recommendations.csv
-├── task_2_comparison_results.csv
-└── task_2_analysis_report.txt
+├── task_3_rdf_recommendations.csv
+├── task_3_comparison_results.csv
+└── task_3_analysis_report.txt
 ```
 
 ---
@@ -238,9 +238,13 @@ Le tableau suivant résume les performances évaluées sur **Top-20**, avec un s
 │   ├── task_1_suggestion.py
 │   └── task_1_qualitative_analysis.py
 │
-├── task_2/                         # Tâche 2 — Graphe de connaissances
-│   ├── task_2_rdf.py
-│   ├── task_2_evaluation.py
+├── task_2/                         # Tâche 2 — Filtrage collaboratif utilisateur (UBCF)
+│   ├── task_2_main.py
+│   └── task_2_evaluation.py
+│
+├── task_3/                         # Tâche 3 — Graphe de connaissances
+│   ├── task_3_rdf.py
+│   ├── task_3_evaluation.py
 │   └── Instructions.md
 │
 ├── data/

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Task 2 - Système de recommandation basé sur un graphe de connaissances
+Task 3 - Système de recommandation basé sur un graphe de connaissances
 
 Ce script implémente les étapes décrites dans Instructions.md :
 1. Mise en place de l’environnement (rdflib, owlready2)
@@ -131,7 +131,7 @@ def generate_recommendations(onto, top_n=20):
     return pd.DataFrame(recommendations)
 
 def main():
-    print("Task 2 - Graphe de connaissances pour recommandation")
+    print("Task 3 - Graphe de connaissances pour recommandation")
 
     # Charger données
     df = load_data()
@@ -143,7 +143,7 @@ def main():
     populate_ontology(df, onto)
 
     # Sauvegarder l'ontologie
-    output_file = path.OUTPUTS / "task_2" / "ontology.owl"
+    output_file = path.OUTPUTS / "task_3" / "ontology.owl"
     output_file.parent.mkdir(parents=True, exist_ok=True)
     onto.save(file=str(output_file))
     print(f"Ontologie sauvegardée dans {output_file}")
@@ -196,7 +196,7 @@ def main():
 
     # Générer recommandations
     reco_df = generate_recommendations(onto)
-    reco_file = path.OUTPUTS / "task_2" / "task_2_rdf_recommendations.csv"
+    reco_file = path.OUTPUTS / "task_3" / "task_3_rdf_recommendations.csv"
     reco_df.to_csv(reco_file, index=False)
     print(f"\nRecommandations sauvegardées dans {reco_file}")
 

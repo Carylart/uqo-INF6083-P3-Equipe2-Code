@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Task 2 - Évaluation et comparaison (Étape 6)
+Task 3 - Évaluation et comparaison (Étape 6)
 
-Évalue les recommandations RDF et compare avec Task 0 (contenu) et Task 1 (collaboratif).
+Évalue les recommandations RDF et compare avec Task 1 (contenu) et Task 2 (collaboratif).
 """
 
 import sys
@@ -69,12 +69,12 @@ def compare_with_previous():
                 'f1': df_task1['f1@20'].mean() if 'f1@20' in df_task1.columns else 'N/A'
             }
     
-    task2_metrics = evaluate_recommendations(pd.read_csv(path.OUTPUTS / 'task_2' / 'task_2_rdf_recommendations.csv'), load_test_data())
+    task3_metrics = evaluate_recommendations(pd.read_csv(path.OUTPUTS / 'task_3' / 'task_3_rdf_recommendations.csv'), load_test_data())
     
     print("\nComparaison (moyennes à Top-20) :")
     print(f"Task 0 (Contenu) : {task0_metrics if task0_metrics else 'N/A'}")
     print(f"Task 1 (Collaboratif UBCF) : {task1_metrics if task1_metrics else 'N/A'}")
-    print(f"Task 2 (RDF/Graphe) : {task2_metrics}")
+    print(f"Task 3 (RDF/Graphe) : {task3_metrics}")
 
     # Discussion
     print("\nAnalyse comparative :")
@@ -90,28 +90,29 @@ def compare_with_previous():
     print("  * Froides-start : moins efficace que collaboratif pour users/items nouveaux.")
     
     # Sauvegarder les résultats de comparaison
-    comparison_file = path.OUTPUTS / "task_2" / "task_2_comparison_results.csv"
+    comparison_file = path.OUTPUTS / "task_3" / "task_3_comparison_results.csv"
     comparison_data = {
-        'approach': ['Task 0 (Contenu)', 'Task 1 (Collaboratif)', 'Task 2 (RDF)'],
-        'precision': [task0_metrics.get('precision', 'N/A'), task1_metrics.get('precision', 'N/A'), task2_metrics.get('precision', 'N/A')],
-        'recall': [task0_metrics.get('recall', 'N/A'), task1_metrics.get('recall', 'N/A'), task2_metrics.get('recall', 'N/A')],
-        'f1': [task0_metrics.get('f1', 'N/A'), task1_metrics.get('f1', 'N/A'), task2_metrics.get('f1', 'N/A')]
+        'approach': ['Task 0 (Contenu)', 'Task 1 (Collaboratif)', 'Task 3 (RDF)'],
+        'precision': [task0_metrics.get('precision', 'N/A'), task1_metrics.get('precision', 'N/A'), task3_metrics.get('precision', 'N/A')],
+        'recall': [task0_metrics.get('recall', 'N/A'), task1_metrics.get('recall', 'N/A'), task3_metrics.get('recall', 'N/A')],
+        'f1': [task0_metrics.get('f1', 'N/A'), task1_metrics.get('f1', 'N/A'), task3_metrics.get('f1', 'N/A')]
     }
     comparison_df = pd.DataFrame(comparison_data)
+    comparison_file.parent.mkdir(parents=True, exist_ok=True)
     comparison_df.to_csv(comparison_file, index=False)
     print(f"\n✓ Comparaison sauvegardée dans {comparison_file}")
     
     # Sauvegarder l'analyse détaillée
-    analysis_file = path.OUTPUTS / "task_2" / "task_2_analysis_report.txt"
+    analysis_file = path.OUTPUTS / "task_3" / "task_3_analysis_report.txt"
     with open(analysis_file, 'w', encoding='utf-8') as f:
         f.write("=" * 80 + "\n")
-        f.write("TASK 2 - ÉVALUATION ET COMPARAISON (ÉTAPE 6)\n")
+        f.write("TASK 3 - ÉVALUATION ET COMPARAISON (ÉTAPE 6)\n")
         f.write("=" * 80 + "\n\n")
         f.write("RÉSULTATS DE COMPARAISON (Top-20)\n")
         f.write("-" * 80 + "\n")
         f.write(f"Task 0 (Contenu) : {task0_metrics if task0_metrics else 'N/A'}\n")
         f.write(f"Task 1 (Collaboratif UBCF) : {task1_metrics if task1_metrics else 'N/A'}\n")
-        f.write(f"Task 2 (RDF/Graphe) : {task2_metrics}\n\n")
+        f.write(f"Task 3 (RDF/Graphe) : {task3_metrics}\n\n")
         f.write("ANALYSE COMPARATIVE\n")
         f.write("-" * 80 + "\n")
         f.write("- Apport sémantique : RDF permet inférence et relations riches (catégories, auteurs, etc.)\n")
@@ -129,7 +130,7 @@ def compare_with_previous():
 def main():
     print("Étape 6 - Évaluation et comparaison")
     test_df = load_test_data()
-    reco_df = pd.read_csv(path.OUTPUTS / "task_2" / "task_2_rdf_recommendations.csv")
+    reco_df = pd.read_csv(path.OUTPUTS / "task_3" / "task_3_rdf_recommendations.csv")
     metrics = evaluate_recommendations(reco_df, test_df)
     print(f"Métriques RDF : {metrics}")
     compare_with_previous()

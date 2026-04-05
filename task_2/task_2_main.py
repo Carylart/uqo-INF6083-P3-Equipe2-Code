@@ -42,17 +42,17 @@ from task_2_evaluation import task_2_evaluation
 
 
 def task_2():
-    print("=" * 60)
+    print("=" * 80)
     print("TASK 2 - USER-BASED COLLABORATIVE FILTERING")
-    print("=" * 60)
+    print("=" * 80)
 
     # ------------------------------------------------------------------
-    # Paramètres qui va guider cette partie
+    # Paramètres
     # ------------------------------------------------------------------
-    LIMIT_USERS  = 1000   # Même limite que Task 1 -- comparaison équitable (const global intéressante)
-    K_NEIGHBORS  = 50     # Nombre de voisins les plus proches à prendre en compte
+    LIMIT_USERS  = 1000   # Même limite que Task 1 pour comparaison équitable
+    K_NEIGHBORS  = 50     # Nombre de voisins les plus proches à considérer
     TOP_N        = 20     # Top-N recommandations finales
-    MIN_COMMON   = 2      # Nombre minimum d'items en commun -- considérer deux utilisateurs similaires (+ elevé + similaires)
+    MIN_COMMON   = 2      # Nombre minimum d'items en commun pour considérer deux utilisateurs similaires
 
     RUN_EVALUATION = True
 
@@ -127,9 +127,9 @@ def task_2():
     # ------------------------------------------------------------------
     # Calcul des scores UBCF pour tous les utilisateurs cibles
     # ------------------------------------------------------------------
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 80)
     print("2.1 - CALCUL DES SCORES USER-BASED CF")
-    print("=" * 60)
+    print("=" * 80)
 
     all_scores_df = compute_ubcf_scores_for_all_users(
         target_user_ids=test_user_ids,

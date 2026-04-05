@@ -1,108 +1,159 @@
-# uqo-INF6083-P3-Equipe2-Code
+# INF6083 – P3 : Systèmes de recommandation
+### Équipe 2 · Hiver 2026 · Université du Québec en Outaouais
 
-## Projet : Systèmes de recommandation (INF6083 - P3)
-
-Ce projet implémente trois approches de systèmes de recommandation basées sur des données Amazon Books :
-
-1. **Task 0** : Filtrage basé sur le contenu (TF-IDF)
-2. **Task 1** : Filtrage collaboratif utilisateur (UBCF)
-3. **Task 2** : Système de recommandation basé sur un graphe de connaissances (RDF/OWL)
+Ce projet explore trois paradigmes fondamentaux des systèmes de recommandation, appliqués à un sous-ensemble du dataset **Amazon Books**. Chaque approche est implémentée de façon indépendante et évaluée avec les mêmes métriques pour permettre une comparaison directe.
 
 ---
 
-## Task 2 : Graphe de connaissances et recommandation sémantique
+## Vue d'ensemble du projet
 
-### 📋 Vue d'ensemble
+| Tâche | Approche | Fichier principal |
+|-------|----------|-------------------|
+| **Tâche 0** | Filtrage basé sur le contenu (TF-IDF) | `task_0/scripts/task_0_main.py` |
+| **Tâche 1** | Filtrage collaboratif utilisateur (UBCF) | `task_1/task_1_main.py` |
+| **Tâche 2** | Graphe de connaissances (RDF/OWL/SPARQL) | `task_2/task_2_rdf.py` |
 
-Task 2 implémente un **système de recommandation basé sur un graphe de connaissances** exploitant des technologies RDF (Resource Description Framework) et OWL (Web Ontology Language). Le système utilise l'inférence logique pour enrichir les recommandations avec des connaissances déduites automatiquement.
+Le dataset utilisé est un sous-ensemble temporel de reviews Amazon Books : **417 utilisateurs**, **1 200 items**, **14 045 interactions**.
 
-### 🎯 Objectifs
+---
 
-Concevoir et implémenter les 6 étapes décrites dans `Instructions.md` :
+## Installation
 
-1. **Mise en place de l'environnement** : Bibliothèques RDF/OWL
-2. **Conception du graphe de connaissances** : Modélisation ontologique
-3. **Construction et stockage des triplets** : Transformation en RDF/OWL
-4. **Règles d'inférence** : Axiomes OWL et règles SWRL
-5. **Exploitation et interrogation avancée** : Requêtes SPARQL
-6. **Évaluation et comparaison** : Métriques vs Task 1
+### Prérequis
 
-### 🏗️ Architecture
+- Python 3.10+
+- Java JDK 21+ (requis uniquement pour la Tâche 2 — raisonneur HermiT)
 
-#### Entités principales
-
-```
-User ← hasReviewed → Review → reviewsItem → Item
-```
-
-**Classes OWL** :
-- `User` : Utilisateur (ex. : `user_AEZ26WGWJ3EOQ4KWSHG77HJAG4EA`)
-- `Item` : Article/Livre (ex. : `item_B09NTKJMWX`)
-- `Review` : Avis client (ex. : `review_user_item`)
-
-**Propriétés** :
-- `hasReviewed` (ObjectProperty) : Utilisateur → Review
-- `reviewsItem` (ObjectProperty) : Review → Item
-- `rating` (DataProperty) : Note de 1-5
-- `title` (DataProperty) : Titre de l'item
-- `liked` (ObjectProperty, inféré) : Utilisateur → Item "aimé"
-
-#### Règles d'inférence SWRL
-
-```sparql
-User(?u), hasReviewed(?u, ?r), reviewsItem(?r, ?i) → liked(?u, ?i)
-```
-
-**Signification** : Si un utilisateur a écrit une review d'un item, alors cet item est considéré comme "aimé" par l'utilisateur.
-
-### 🚀 Utilisation
-
-#### Installation des dépendances
+### Mise en place de l'environnement
 
 ```bash
-pip install rdflib owlready2 pandas
-# Java JDK 21+ requis pour HermiT reasoner
+# Cloner le dépôt et se placer à la racine
+git clone <repo-url>
+cd uqo-INF6083-P3-Equipe2-Code
+
+# Créer et activer l'environnement virtuel
+python -m venv .venv
+
+# Windows
+.venv\Scripts\Activate.ps1
+
+# Linux / macOS
+source .venv/bin/activate
+
+# Installer les dépendances
+pip install -r requirements.txt
 ```
 
-#### Lancer le pipeline complet
+> **Note Windows** : si `py` ne fonctionne pas dans le terminal, utilisez directement `.venv\Scripts\python.exe` pour lancer les scripts.
+
+---
+
+## Tâche 0 — Filtrage basé sur le contenu (TF-IDF)
+
+### Principe
+
+Chaque item est représenté par un vecteur TF-IDF construit à partir de ses métadonnées textuelles (titre, description, catégories). Le profil d'un utilisateur est calculé comme la moyenne pondérée des vecteurs des items avec lesquels il a interagi. Les recommandations sont produites en calculant la similarité cosinus entre le profil utilisateur et tous les items non encore vus.
+
+### Lancer la tâche
 
 ```bash
-python task_2/task_2_rdf.py       # Générer ontologie et recommandations
-python task_2/task_2_evaluation.py # Évaluer et comparer
+python task_0/scripts/task_0_main.py
 ```
 
-#### Étapes du pipeline
+### Fichiers générés
 
-1. **Chargement des données** : `temporal_filtered.parquet` (14,045 reviews)
-2. **Création ontologie** : Définition des classes et propriétés OWL
-3. **Peuplement** : Création de ~15,348 individus RDF
-4. **Inférence HermiT** : Application des règles SWRL (~3-5s)
-5. **Requêtes SPARQL** : Extraction items explicites et inférés
-6. **Recommandations** : Génération scores basés sur ratings (Top-20)
+```
+data/outputs/task_1/
+├── task_1_all_users_scores.csv
+├── task_1_top_20_test_items_from_train_scores.csv
+└── task_1_task_1_evaluation_global_metrics_top20.csv
+```
 
-### 📊 Résultats (Top-20)
+---
 
-| Métrique | Task 1 (UBCF) | Task 2 (RDF) | Amélioration |
-|----------|---|---|---|
-| **Precision** | 0.0106 | 0.301 | +2,740% ✓ |
-| **Recall** | 0.0432 | 0.488 | +1,030% ✓ |
-| **F1** | 0.0166 | 0.333 | +1,906% ✓ |
+## Tâche 1 — Filtrage collaboratif utilisateur (User-Based CF)
 
-### 📁 Fichiers générés
+### Principe
+
+Le filtrage collaboratif basé sur les utilisateurs (UBCF) ne s'appuie sur aucune description textuelle des items. Il part d'une hypothèse simple : **des utilisateurs qui ont aimé les mêmes choses par le passé auront tendance à apprécier les mêmes choses à l'avenir**.
+
+Pour chaque utilisateur cible, le système :
+1. Calcule la **similarité cosinus** entre cet utilisateur et tous les autres, à partir de la matrice d'interactions `R_train` (417 × 1 200).
+2. Sélectionne les **K = 50 voisins les plus proches** ayant au moins 2 items en commun.
+3. Agrège les ratings des voisins pour estimer l'intérêt de l'utilisateur pour chaque item non encore vu :
+
+```
+score(u, i) = Σ sim(u,v) · R[v,i]  /  Σ |sim(u,v)|
+```
+
+4. Retourne les **Top-20** items avec les meilleurs scores.
+
+### Lancer la tâche
+
+```bash
+python task_1/task_1_main.py
+```
+
+### Paramètres configurables (en tête de `task_1_main.py`)
+
+| Paramètre | Valeur par défaut | Description |
+|-----------|-------------------|-------------|
+| `LIMIT_USERS` | 1000 | Nombre max d'utilisateurs traités |
+| `K_NEIGHBORS` | 50 | Nombre de voisins considérés |
+| `TOP_N` | 20 | Taille de la liste de recommandations |
+| `MIN_COMMON` | 2 | Items en commun minimum pour valider un voisin |
+
+### Fichiers générés
 
 ```
 data/outputs/task_2/
-├── ontology.owl                      # Ontologie OWL complète avec inférences
-├── task_2_rdf_recommendations.csv    # Recommandations Top-20 par user
-├── task_2_comparison_results.csv     # Comparaison métriques Task 0/1/2
-├── task_2_analysis_report.txt        # Analyse détaillée
-└── graph.ttl                         # Graphe RDF en format Turtle
+├── task_2_all_users_scores.csv
+├── task_2_top_20_recommendations.csv
+├── task_2_evaluation_global_metrics_top20.csv
+└── task_2_evaluation_per_user_metrics_top20.csv
 ```
 
-### 🔍 Requêtes SPARQL exemples
+### Résultats
 
-#### Trouver items appréciés explicitement (rating > 4)
+Sur 417 utilisateurs, **414 ont reçu au moins une recommandation** (couverture 99,3 %). Les 3 utilisateurs sans recommandation sont des profils isolés sans voisin valide dans le dataset (problème de cold start).
 
+---
+
+## Tâche 2 — Graphe de connaissances (RDF/OWL/SPARQL)
+
+### Principe
+
+Cette tâche modélise les données sous forme d'un **graphe de connaissances** en utilisant les technologies RDF et OWL. L'idée centrale est d'enrichir les recommandations non pas par similarité statistique, mais par **inférence logique** à partir de relations sémantiques explicitement définies.
+
+### Architecture du graphe
+
+```
+User ── hasReviewed ──▶ Review ── reviewsItem ──▶ Item
+                           └── rating (1–5)
+                           └── liked (inféré)
+```
+
+**Classes OWL** : `User`, `Item`, `Review`
+
+**Règle d'inférence SWRL** :
+```
+User(?u), hasReviewed(?u, ?r), reviewsItem(?r, ?i) → liked(?u, ?i)
+```
+Si un utilisateur a écrit un avis sur un item, il est inféré comme "aimé".
+
+### Lancer la tâche
+
+```bash
+# Étapes 1 à 5 : création du graphe, inférence, requêtes SPARQL
+python task_2/task_2_rdf.py
+
+# Étape 6 : évaluation et comparaison
+python task_2/task_2_evaluation.py
+```
+
+### Requêtes SPARQL disponibles
+
+**Items explicitement appréciés (rating > 4) :**
 ```sparql
 PREFIX ex: <http://example.org/recommendation.owl#>
 SELECT ?item ?rating
@@ -112,57 +163,58 @@ WHERE {
     ?review ex:rating ?rating .
     FILTER (?rating > 4.0)
 }
-ORDER BY DESC(?rating)
+ORDER BY DESC(?rating) LIMIT 20
+```
+
+**Items inférés via la relation `liked` :**
+```sparql
+PREFIX ex: <http://example.org/recommendation.owl#>
+SELECT ?item
+WHERE { ex:user_123 ex:liked ?item . }
 LIMIT 20
 ```
 
-#### Trouver items "likés" via inférence
-
+**Recommandations excluant les items déjà vus :**
 ```sparql
 PREFIX ex: <http://example.org/recommendation.owl#>
 SELECT ?item
 WHERE {
     ex:user_123 ex:liked ?item .
-}
-LIMIT 20
-```
-
-#### Recommandations excluant items déjà vus
-
-```sparql
-PREFIX ex: <http://example.org/recommendation.owl#>
-SELECT ?item
-WHERE {
-    ex:user_123 ex:liked ?item .
-    FILTER NOT EXISTS { 
-        ex:user_123 ex:hasReviewed ?review . 
-        ?review ex:reviewsItem ?item . 
+    FILTER NOT EXISTS {
+        ex:user_123 ex:hasReviewed ?review .
+        ?review ex:reviewsItem ?item .
     }
 }
 LIMIT 20
 ```
 
-### 💡 Avantages du graphe de connaissances
+### Fichiers générés
 
-✓ **Explicabilité** : Tracer POURQUOI un item est recommandé via SPARQL  
-✓ **Flexibilité** : Ajouter nouvelles relations/règles sans recalcul complet  
-✓ **Sémantique** : Capturer domaine métier (catégories, auteurs, etc.)  
-✓ **Inférence** : Découvrir connections implicites automatiquement  
-✓ **Performance** : Task 2 surpasse Task 1 de ~27x en Precision  
+```
+data/outputs/task_2/
+├── ontology.owl
+├── graph.ttl
+├── task_2_rdf_recommendations.csv
+├── task_2_comparison_results.csv
+└── task_2_analysis_report.txt
+```
 
-### ⚠️ Limitations
+---
 
-✗ **Performance** : Graphes volumineux ralentissent inférence (HermiT)  
-✗ **Complétude** : Dépend de qualité de l'ontologie et données  
-✗ **Cold-start** : Moins efficace pour users/items nouveaux  
-✗ **Complexité** : Courbe d'apprentissage RDF/OWL/SPARQL  
+## Comparaison des trois approches
 
-### 📚 Références
+Le tableau suivant résume les performances évaluées sur **Top-20**, avec un seuil de positivité à **rating ≥ 4,0** :
 
-- [rdflib documentation](https://rdflib.readthedocs.io/)
-- [Owlready2 documentation](https://owlready2.readthedocs.io/)
-- [W3C SPARQL specification](https://www.w3.org/TR/sparql11-query/)
-- [OWL Web Ontology Language](https://www.w3.org/OWL/)
+| Approche | Precision@20 | Recall@20 | F1@20 | HitRate@20 | MAP@20 | NDCG@20 | RMSE | MAE |
+|----------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **T0 – Contenu (TF-IDF)** | 0.0106 | 0.0432 | 0.0166 | 0.1711 | 0.0143 | 0.0333 | 4.280 | 4.230 |
+| **T1 – Collaboratif (UBCF)** | 0.0062 | 0.0199 | 0.0090 | 0.0867 | 0.0047 | 0.0131 | 0.633 | 0.332 |
+| **T2 – Graphe de connaissances** | 0.301 | 0.488 | 0.333 | — | — | — | — | — |
+
+**Points clés :**
+- Le **filtrage basé sur le contenu** est le plus efficace pour retrouver de bons items dans un Top-N sur ce dataset (meilleurs Precision, HitRate, NDCG).
+- Le **filtrage collaboratif** prédit mieux la note réelle (RMSE 0,63 vs 4,28) mais souffre de la sparsité du dataset pour le classement.
+- Le **graphe de connaissances** obtient les meilleures métriques de classement grâce à l'inférence sémantique, au prix d'une complexité de mise en œuvre plus élevée.
 
 ---
 
@@ -170,61 +222,55 @@ LIMIT 20
 
 ```
 .
-├── task_0/              # Filtrage contenu (TF-IDF)
-├── task_1/              # Filtrage collaboratif (UBCF)
-├── task_2/              # Graphe connaissances (RDF/OWL)
-│   ├── task_2_rdf.py           ✓ Création ontologie + inférence
-│   ├── task_2_evaluation.py    ✓ Évaluation et comparaison
-│   └── Instructions.md         📋 Spécifications
+├── task_0/                         # Tâche 0 — Filtrage contenu
+│   └── scripts/
+│       ├── task_0_main.py
+│       ├── build_tfidf.py
+│       ├── build_user_profiles.py
+│       ├── joining.py
+│       └── precursor.py
+│
+├── task_1/                         # Tâche 1 — Filtrage collaboratif (UBCF)
+│   ├── task_1_main.py
+│   ├── task_1_score.py
+│   ├── task_1_evaluation.py
+│   ├── task_1_metric_functions.py
+│   ├── task_1_suggestion.py
+│   └── task_1_qualitative_analysis.py
+│
+├── task_2/                         # Tâche 2 — Graphe de connaissances
+│   ├── task_2_rdf.py
+│   ├── task_2_evaluation.py
+│   └── Instructions.md
+│
 ├── data/
-│   ├── input/           # Données brutes
+│   ├── input/                      # Données brutes
 │   └── outputs/
-│       ├── task_1/
-│       ├── task_2/      ✓ Outputs Task 2 (voir ci-dessus)
-│       └── processed/
-├── requirements.txt     # Dépendances Python
-└── README.md           # Ce fichier
+│       ├── task_1/                 # Sorties Tâche 0
+│       ├── task_2/                 # Sorties Tâches 1 et 2
+│       └── processed/              # Données pré-traitées (splits, TF-IDF, etc.)
+│
+├── path.py                         # Chemins centralisés
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
-## Installation et configuration
+## Dépendances principales
 
-### Prérequis
-
-- Python 3.10+
-- Java JDK 21+ (pour HermiT reasoner)
-- pip
-
-### Setup
-
-```bash
-# Créer venv
-python -m venv .venv
-source .venv/Scripts/activate  # Windows
-# ou
-source .venv/bin/activate      # Linux/macOS
-
-# Installer dépendances
-pip install -r requirements.txt
-
-# Ajouter Java au PATH (si nécessaire)
-export PATH="$PATH:/usr/local/bin/java"  # Linux/macOS
-# ou sur Windows : Paramètres système → Variables d'environnement
+```
+pandas
+numpy
+scipy
+scikit-learn
+pyarrow
+rdflib
+owlready2
 ```
 
-### Exécution
-
-```bash
-# Task 2 complète (étapes 1-5)
-python task_2/task_2_rdf.py
-
-# Évaluation et comparaison (étape 6)
-python task_2/task_2_evaluation.py
-```
+Installation complète : `pip install -r requirements.txt`
 
 ---
 
-## Auteurs
-
-Équipe 2 - INF6083 Projet P3 (2026)
+*Équipe 2 — INF6083 Projet P3, Hiver 2026*

@@ -9,8 +9,8 @@ Ce projet explore trois paradigmes fondamentaux des systèmes de recommandation,
 
 | Tâche | Approche | Fichier principal |
 |-------|----------|-------------------|
-| **Tâche 0** | Filtrage basé sur le contenu (TF-IDF) | `task_0/scripts/task_0_main.py` |
-| **Tâche 1** | Filtrage collaboratif utilisateur (UBCF) | `task_1/task_1_main.py` |
+| **Tâche 0** | Données + Filtrage basé sur le contenu (TF-IDF) | `task_0/scripts/task_0_main.py` `task_1/task_1_main.py` |
+| **Tâche 1** | Filtrage collaboratif utilisateur (UBCF) | `task_2/task_2_main.py` |
 | **Tâche 3** | Graphe de connaissances (RDF/OWL/SPARQL) | `task_3/task_3_rdf.py` |
 
 Le dataset utilisé est un sous-ensemble temporel de reviews Amazon Books : **417 utilisateurs**, **1 200 items**, **14 045 interactions**.
@@ -57,7 +57,8 @@ Chaque item est représenté par un vecteur TF-IDF construit à partir de ses m�
 ### Lancer la tâche
 
 ```bash
-python task_0/scripts/task_0_main.py
+python task_0/scripts/task_0_main.py # Pour les données
+pyhton task_1/task_1_main.py` # Pour la tâche 0
 ```
 
 ### Fichiers générés
@@ -91,7 +92,7 @@ score(u, i) = Σ sim(u,v) · R[v,i]  /  Σ |sim(u,v)|
 ### Lancer la tâche
 
 ```bash
-python task_1/task_1_main.py
+python task_2/task_2_main.py
 ```
 
 ### Paramètres configurables (en tête de `task_1_main.py`)
@@ -222,7 +223,7 @@ Le tableau suivant résume les performances évaluées sur **Top-20**, avec un s
 
 ```
 .
-├── task_0/                         # Tâche 0 — Filtrage contenu
+├── task_0/                         # Tâche 0 — Préparation des données
 │   └── scripts/
 │       ├── task_0_main.py
 │       ├── build_tfidf.py
@@ -230,7 +231,7 @@ Le tableau suivant résume les performances évaluées sur **Top-20**, avec un s
 │       ├── joining.py
 │       └── precursor.py
 │
-├── task_1/                         # Tâche 1 — Filtrage collaboratif (UBCF)
+├── task_1/                         # Tâche 0 — Filtrage sur les Items (TF-IDF)
 │   ├── task_1_main.py
 │   ├── task_1_score.py
 │   ├── task_1_evaluation.py

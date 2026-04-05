@@ -1,6 +1,6 @@
 # Diagnostic Task 0 — Préparation des données (P2)
 
-- generated_at: 2026-04-03T15:59:50
+- generated_at: 2026-04-05T15:25:35
 
 ## A. Réutilisation du sous-ensemble de travail
 - note: `P2 réutilise les sous-ensembles P1 (active/temporal, filtered + splits).`
@@ -18,7 +18,7 @@
 - rows: `0`
 - cols: `0`
 - size_bytes: `0`
-- paths: `['/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/processed/sample-active-users/active_users_filtered.parquet']`
+- paths: `['C:\\Users\\azize\\Desktop\\UQO\\Systèmes_de_recommandation\\P3\\uqo-INF6083-P3-Equipe2-Code\\data\\outputs\\processed\\sample-active-users\\active_users_filtered.parquet']`
 - columns names: `[]`
 
 ### temporal_pre_split
@@ -31,7 +31,7 @@
 - rows: `14045`
 - cols: `10`
 - size_bytes: `8683147`
-- paths: `['/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/processed/sample-temporal/temporal_filtered.parquet']`
+- paths: `['C:\\Users\\azize\\Desktop\\UQO\\Systèmes_de_recommandation\\P3\\uqo-INF6083-P3-Equipe2-Code\\data\\outputs\\processed\\sample-temporal\\temporal_filtered.parquet']`
 - columns names: `['rating', 'title', 'text', 'images', 'asin', 'parent_asin', 'user_id', 'timestamp', 'helpful_vote', 'verified_purchase']`
 
 ### metadata
@@ -44,16 +44,16 @@
 - rows: `4448181`
 - cols: `16`
 - size_bytes: `4696898230`
-- paths: `['/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/raw/parquet/meta_Books.parquet']`
+- paths: `['C:\\Users\\azize\\Desktop\\UQO\\Systèmes_de_recommandation\\P3\\uqo-INF6083-P3-Equipe2-Code\\data\\outputs\\raw\\parquet\\meta_Books.parquet']`
 - columns names: `['main_category', 'title', 'subtitle', 'author', 'average_rating', 'rating_number', 'features', 'description', 'price', 'images', 'videos', 'store', 'categories', 'details', 'parent_asin', 'bought_together']`
 
 
 ### temporal_pre_split
-- chemin de sauvegarde: `/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/joining/temporal_pre_split_clean_joined.parquet`
+- chemin de sauvegarde: `C:\Users\azize\Desktop\UQO\Systèmes_de_recommandation\P3\uqo-INF6083-P3-Equipe2-Code\data\outputs\joining\temporal_pre_split_clean_joined.parquet`
 
 
 ### temporal_pre_split
-- chemin de sauvegarde: `/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/joining/temporal_pre_split_clean_joined.parquet`
+- chemin de sauvegarde: `C:\Users\azize\Desktop\UQO\Systèmes_de_recommandation\P3\uqo-INF6083-P3-Equipe2-Code\data\outputs\joining\temporal_pre_split_clean_joined.parquet`
 
 ## C. Vérifications schéma et clés (`parent_asin`)
 
@@ -215,7 +215,7 @@
 ## G. Jeux de données finaux
 
 ### temporal_pre_split
-- path: `/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/joining/temporal_pre_split_clean_joined.parquet`
+- path: `C:\Users\azize\Desktop\UQO\Systèmes_de_recommandation\P3\uqo-INF6083-P3-Equipe2-Code\data\outputs\joining\temporal_pre_split_clean_joined.parquet`
 - rows: `13731`
 - cols: `16`
 
@@ -259,5 +259,5 @@
 - Items test-only : **104** (18.9091%)
   - Items test-only ont une représentation metadata (TF-IDF sur title/description) même sans interaction train — acceptable pour un content-based system.
 
-- `/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/joining/temporal_pre_split/train_interactions.parquet`
-- `/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/joining/temporal_pre_split/test_interactions.parquet`
+- `C:\Users\azize\Desktop\UQO\Systèmes_de_recommandation\P3\uqo-INF6083-P3-Equipe2-Code\data\outputs\joining\temporal_pre_split\train_interactions.parquet`
+- `C:\Users\azize\Desktop\UQO\Systèmes_de_recommandation\P3\uqo-INF6083-P3-Equipe2-Code\data\outputs\joining\temporal_pre_split\test_interactions.parquet`

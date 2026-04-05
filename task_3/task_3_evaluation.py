@@ -52,13 +52,25 @@ def evaluate_recommendations(reco_df, test_df, k=20):
     return avg_metrics
 
 def compare_with_previous():
-    """Compare avec Task 0 et Task 1."""
-    # Charger métriques de Task 0 et Task 1 (si disponibles)
+    """Compare avec Task 0 (contenu) et Task 1 (collaboratif)."""
+    # Charger métriques de Task 0 (contenu TF-IDF) et Task 1 (collaboratif UBCF)
     task0_metrics = {}
     task1_metrics = {}
     
-    # Essayer charger Task 1 (le plus proche pour comparaison)
-    task1_eval_file = path.OUTPUTS / "task_1" / "task_1_task_1_evaluation_global_metrics_top20.csv"
+    # Charger Task 0 (contenu) depuis task_1
+    task0_eval_file = path.OUTPUTS / "task_1" / "task_1_task_1_evaluation_global_metrics_top20.csv"
+    if task0_eval_file.exists():
+        df_task0 = pd.read_csv(task0_eval_file)
+        if not df_task0.empty:
+            # Extraire les moyennes
+            task0_metrics = {
+                'precision': df_task0['precision@20'].mean() if 'precision@20' in df_task0.columns else 'N/A',
+                'recall': df_task0['recall@20'].mean() if 'recall@20' in df_task0.columns else 'N/A',
+                'f1': df_task0['f1@20'].mean() if 'f1@20' in df_task0.columns else 'N/A'
+            }
+    
+    # Charger Task 1 (collaboratif) depuis task_2
+    task1_eval_file = path.OUTPUTS / "task_2" / "task_2_evaluation_global_metrics_top20.csv"
     if task1_eval_file.exists():
         df_task1 = pd.read_csv(task1_eval_file)
         if not df_task1.empty:
@@ -72,7 +84,7 @@ def compare_with_previous():
     task3_metrics = evaluate_recommendations(pd.read_csv(path.OUTPUTS / 'task_3' / 'task_3_rdf_recommendations.csv'), load_test_data())
     
     print("\nComparaison (moyennes à Top-20) :")
-    print(f"Task 0 (Contenu) : {task0_metrics if task0_metrics else 'N/A'}")
+    print(f"Task 0 (Contenu TF-IDF) : {task0_metrics if task0_metrics else 'N/A'}")
     print(f"Task 1 (Collaboratif UBCF) : {task1_metrics if task1_metrics else 'N/A'}")
     print(f"Task 3 (RDF/Graphe) : {task3_metrics}")
 
@@ -92,7 +104,7 @@ def compare_with_previous():
     # Sauvegarder les résultats de comparaison
     comparison_file = path.OUTPUTS / "task_3" / "task_3_comparison_results.csv"
     comparison_data = {
-        'approach': ['Task 0 (Contenu)', 'Task 1 (Collaboratif)', 'Task 3 (RDF)'],
+        'approach': ['Task 0 (Contenu TF-IDF)', 'Task 1 (Collaboratif UBCF)', 'Task 3 (RDF/Graphe)'],
         'precision': [task0_metrics.get('precision', 'N/A'), task1_metrics.get('precision', 'N/A'), task3_metrics.get('precision', 'N/A')],
         'recall': [task0_metrics.get('recall', 'N/A'), task1_metrics.get('recall', 'N/A'), task3_metrics.get('recall', 'N/A')],
         'f1': [task0_metrics.get('f1', 'N/A'), task1_metrics.get('f1', 'N/A'), task3_metrics.get('f1', 'N/A')]
@@ -110,7 +122,7 @@ def compare_with_previous():
         f.write("=" * 80 + "\n\n")
         f.write("RÉSULTATS DE COMPARAISON (Top-20)\n")
         f.write("-" * 80 + "\n")
-        f.write(f"Task 0 (Contenu) : {task0_metrics if task0_metrics else 'N/A'}\n")
+        f.write(f"Task 0 (Contenu TF-IDF) : {task0_metrics if task0_metrics else 'N/A'}\n")
         f.write(f"Task 1 (Collaboratif UBCF) : {task1_metrics if task1_metrics else 'N/A'}\n")
         f.write(f"Task 3 (RDF/Graphe) : {task3_metrics}\n\n")
         f.write("ANALYSE COMPARATIVE\n")

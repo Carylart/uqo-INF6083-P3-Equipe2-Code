@@ -6,7 +6,7 @@
       "role": "interactions",
       "kind": "single",
       "paths": [
-        "/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/processed/sample-active-users/active_users_filtered.parquet"
+        "C:\\Users\\azize\\Desktop\\UQO\\Systèmes_de_recommandation\\P3\\uqo-INF6083-P3-Equipe2-Code\\data\\outputs\\processed\\sample-active-users\\active_users_filtered.parquet"
       ]
     },
     "temporal_pre_split": {
@@ -15,7 +15,7 @@
       "role": "interactions",
       "kind": "single",
       "paths": [
-        "/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/processed/sample-temporal/temporal_filtered.parquet"
+        "C:\\Users\\azize\\Desktop\\UQO\\Systèmes_de_recommandation\\P3\\uqo-INF6083-P3-Equipe2-Code\\data\\outputs\\processed\\sample-temporal\\temporal_filtered.parquet"
       ]
     },
     "metadata": {
@@ -24,7 +24,7 @@
       "role": "metadata",
       "kind": "single",
       "paths": [
-        "/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/raw/parquet/meta_Books.parquet"
+        "C:\\Users\\azize\\Desktop\\UQO\\Systèmes_de_recommandation\\P3\\uqo-INF6083-P3-Equipe2-Code\\data\\outputs\\raw\\parquet\\meta_Books.parquet"
       ]
     }
   },
@@ -41,7 +41,7 @@
       "role": "interactions",
       "kind": "single",
       "paths": [
-        "/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/processed/sample-active-users/active_users_filtered.parquet"
+        "C:\\Users\\azize\\Desktop\\UQO\\Systèmes_de_recommandation\\P3\\uqo-INF6083-P3-Equipe2-Code\\data\\outputs\\processed\\sample-active-users\\active_users_filtered.parquet"
       ],
       "exists": false,
       "format": "parquet",
@@ -51,7 +51,7 @@
       "columns": [],
       "details": {
         "exists": false,
-        "abs_path": "/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/processed/sample-active-users/active_users_filtered.parquet",
+        "abs_path": "C:\\Users\\azize\\Desktop\\UQO\\Systèmes_de_recommandation\\P3\\uqo-INF6083-P3-Equipe2-Code\\data\\outputs\\processed\\sample-active-users\\active_users_filtered.parquet",
         "format": "parquet",
         "size_bytes": 0,
         "n_rows": 0,
@@ -66,7 +66,7 @@
       "role": "interactions",
       "kind": "single",
       "paths": [
-        "/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/processed/sample-temporal/temporal_filtered.parquet"
+        "C:\\Users\\azize\\Desktop\\UQO\\Systèmes_de_recommandation\\P3\\uqo-INF6083-P3-Equipe2-Code\\data\\outputs\\processed\\sample-temporal\\temporal_filtered.parquet"
       ],
       "exists": true,
       "format": "parquet",
@@ -87,7 +87,7 @@
       ],
       "details": {
         "exists": true,
-        "abs_path": "/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/processed/sample-temporal/temporal_filtered.parquet",
+        "abs_path": "C:\\Users\\azize\\Desktop\\UQO\\Systèmes_de_recommandation\\P3\\uqo-INF6083-P3-Equipe2-Code\\data\\outputs\\processed\\sample-temporal\\temporal_filtered.parquet",
         "format": "parquet",
         "size_bytes": 8683147,
         "n_rows": 14045,
@@ -113,7 +113,7 @@
       "role": "metadata",
       "kind": "single",
       "paths": [
-        "/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/raw/parquet/meta_Books.parquet"
+        "C:\\Users\\azize\\Desktop\\UQO\\Systèmes_de_recommandation\\P3\\uqo-INF6083-P3-Equipe2-Code\\data\\outputs\\raw\\parquet\\meta_Books.parquet"
       ],
       "exists": true,
       "format": "parquet",
@@ -140,7 +140,7 @@
       ],
       "details": {
         "exists": true,
-        "abs_path": "/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/raw/parquet/meta_Books.parquet",
+        "abs_path": "C:\\Users\\azize\\Desktop\\UQO\\Systèmes_de_recommandation\\P3\\uqo-INF6083-P3-Equipe2-Code\\data\\outputs\\raw\\parquet\\meta_Books.parquet",
         "format": "parquet",
         "size_bytes": 4696898230,
         "n_rows": 4448181,
@@ -906,7 +906,7 @@
   },
   "final_datasets": {
     "temporal_pre_split": {
-      "path": "/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/joining/temporal_pre_split_clean_joined.parquet",
+      "path": "C:\\Users\\azize\\Desktop\\UQO\\Systèmes_de_recommandation\\P3\\uqo-INF6083-P3-Equipe2-Code\\data\\outputs\\joining\\temporal_pre_split_clean_joined.parquet",
       "n_rows": 13731,
       "n_cols": 16
     }
@@ -959,8 +959,8 @@
       "justification": "Split temporel : on entraîne sur le passé, on évalue sur le futur. Simule un scénario de déploiement réaliste. Utilisateurs avec <3 interactions → train only (pas assez d'historique pour construire un profil ET tester).",
       "rule": "n_test = max(1, floor(n_total × 0.2)), borné à n_total − 1. Utilisateurs avec <3 interactions → train uniquement.",
       "paths": {
-        "train_path": "/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/joining/temporal_pre_split/train_interactions.parquet",
-        "test_path": "/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/joining/temporal_pre_split/test_interactions.parquet"
+        "train_path": "C:\\Users\\azize\\Desktop\\UQO\\Systèmes_de_recommandation\\P3\\uqo-INF6083-P3-Equipe2-Code\\data\\outputs\\joining\\temporal_pre_split\\train_interactions.parquet",
+        "test_path": "C:\\Users\\azize\\Desktop\\UQO\\Systèmes_de_recommandation\\P3\\uqo-INF6083-P3-Equipe2-Code\\data\\outputs\\joining\\temporal_pre_split\\test_interactions.parquet"
       }
     }
   },
@@ -976,10 +976,10 @@
     },
     "paths_by_target": {
       "active_pre_split": [
-        "/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/processed/sample-active-users/active_users_filtered.parquet"
+        "C:\\Users\\azize\\Desktop\\UQO\\Systèmes_de_recommandation\\P3\\uqo-INF6083-P3-Equipe2-Code\\data\\outputs\\processed\\sample-active-users\\active_users_filtered.parquet"
       ],
       "temporal_pre_split": [
-        "/home/theo/Documents/Cours/INF6083 - Sujets Spéciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/processed/sample-temporal/temporal_filtered.parquet"
+        "C:\\Users\\azize\\Desktop\\UQO\\Systèmes_de_recommandation\\P3\\uqo-INF6083-P3-Equipe2-Code\\data\\outputs\\processed\\sample-temporal\\temporal_filtered.parquet"
       ]
     },
     "methodological_note": "Aucun nouvel échantillonnage massif du corpus complet n'est effectué; les jeux issus de P1 sont réexploités pour la fusion avec meta_Books."

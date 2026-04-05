@@ -1,5 +1,5 @@
 {
-  "source_file": "/home/theo/Documents/Cours/INF6083 - Sujets SpÃ©ciaux/P3/uqo-INF6083-P3-Equipe2-Code/data/outputs/processed/sample-temporal/temporal_filtered.parquet",
+  "source_file": "C:\\Users\\azize\\Desktop\\UQO\\Systèmes_de_recommandation\\P3\\uqo-INF6083-P3-Equipe2-Code\\data\\outputs\\processed\\sample-temporal\\temporal_filtered.parquet",
   "split_seed": 42,
   "train_ratio": 0.8,
   "test_ratio": 0.19999999999999996,
